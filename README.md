@@ -8,4 +8,6 @@
   <li>Making and merging branches</li>
   <li>Initializing Github repository and cloning locally</li>
   <li>Basic Java Programming</li>
+  <li>Try Catch Exception Handling</li>
+  <li>Scanner Input, Methods, Conditional Logic</li>
 </ul>

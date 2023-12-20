@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -9,9 +10,10 @@ public class Main {
         while (true) {
             System.out.println("Enter a number to be the upper bound of a multiplication table: ");
 
-            if (scanner.hasNextInt()) {
+            try {
                 int num = scanner.nextInt();
                 scanner.nextLine();
+
                 for (int i = 1; i <= num; i++) {
                     for (int j = 1; j <= num; j++) {
                         System.out.print(i * j + "\t");
@@ -37,19 +39,17 @@ public class Main {
                     }
                 }
 
-                if (newTable == true) {
+                if (newTable) {
                     System.out.println();
                     continue;
                 } else {
                     System.out.println("Thank you! Have a great day!");
                     break;
                 }
-
-            } else {
-                System.out.println("Invalid Input. Please enter a positive integer.");
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid Input. Please enter a valid integer.");
                 System.out.println();
-                scanner.nextLine();
-                continue;
+                scanner.nextLine(); // Clear the input buffer
             }
         }
 

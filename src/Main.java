@@ -13,14 +13,7 @@ public class Main {
             try {
                 int num = scanner.nextInt();
                 scanner.nextLine();
-
-                for (int i = 1; i <= num; i++) {
-                    for (int j = 1; j <= num; j++) {
-                        System.out.print(i * j + "\t");
-                    }
-                    System.out.println();
-                }
-                System.out.println();
+                printTable(num);
 
                 boolean newTable = false;
                 while (true) {
@@ -55,5 +48,15 @@ public class Main {
 
         // Close the scanner
         scanner.close();
+    }
+
+    private static void printTable(int num) {
+        for (int i = 1; i <= num; i++) {
+            for (int j = 1; j <= num; j++) {
+                System.out.print(i * j + "\t");
+            }
+            System.out.println();
+        }
+        System.out.println();
     }
 }

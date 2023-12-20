@@ -7,44 +7,27 @@ public class Main {
         // Initialize Scanner
         Scanner scanner = new Scanner(System.in);
 
-        while (true) {
+        boolean newTable = true;
+        while (newTable) {
             System.out.println("Enter a number to be the upper bound of a multiplication table: ");
 
             try {
+                // Get user input
                 int num = scanner.nextInt();
                 scanner.nextLine();
                 printTable(num);
 
-                boolean newTable = false;
-                while (true) {
-                    System.out.println("Would you like to print another multiplication table?");
-                    System.out.println("Type 'yes' or 'no'");
-                    String userInput = scanner.nextLine();
-                    if (userInput.equalsIgnoreCase("yes")) {
-                        newTable = true;
-                        break;
-                    } else if (userInput.equalsIgnoreCase("no")) {
-                        newTable = false;
-                        break;
-                    } else {
-                        System.out.println("You did not enter a valid input.");
-                        continue;
-                    }
-                }
+                // Ask user if they want another table
+                newTable = anotherTable(scanner);
+                System.out.println();
 
-                if (newTable) {
-                    System.out.println();
-                    continue;
-                } else {
-                    System.out.println("Thank you! Have a great day!");
-                    break;
-                }
             } catch (InputMismatchException e) {
                 System.out.println("Invalid Input. Please enter a valid integer.");
                 System.out.println();
-                scanner.nextLine(); // Clear the input buffer
+                scanner.nextLine(); // Clear the invalid input from buffer
             }
         }
+        System.out.println("Thank you! Have a great day!");
 
         // Close the scanner
         scanner.close();
@@ -58,5 +41,21 @@ public class Main {
             System.out.println();
         }
         System.out.println();
+    }
+
+    private static boolean anotherTable(Scanner scanner) {
+        while (true) {
+            System.out.println("Would you like to print another multiplication table?");
+            System.out.println("Type 'yes' or 'no'");
+            String userInput = scanner.nextLine();
+            if (userInput.equalsIgnoreCase("yes")) {
+                return true;
+            } else if (userInput.equalsIgnoreCase("no")) {
+                return false;
+            } else {
+                System.out.println("You did not enter a valid input.");
+                continue;
+            }
+        }
     }
 }

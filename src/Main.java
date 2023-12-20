@@ -14,17 +14,25 @@ public class Main {
             try {
                 // Get user input
                 int num = scanner.nextInt();
+
+                // Check if integer is negative
+                if (num < 1) {
+                    throw new InputMismatchException("Invalid Input. Please enter a positive integer greater than 0.");
+                }
+
+                // Clear newline character from user input
                 scanner.nextLine();
+
+                // Print table
                 printTable(num);
 
                 // Ask user if they want another table
                 newTable = anotherTable(scanner);
-                System.out.println();
 
             } catch (InputMismatchException e) {
-                System.out.println("Invalid Input. Please enter a valid integer.");
+                System.out.println("Invalid Input. Please enter a positive integer.");
                 System.out.println();
-                scanner.nextLine(); // Clear the invalid input from buffer
+                scanner.nextLine(); // Clear the invalid input or newline from buffer
             }
         }
         System.out.println("Thank you! Have a great day!");
@@ -49,11 +57,14 @@ public class Main {
             System.out.println("Type 'yes' or 'no'");
             String userInput = scanner.nextLine();
             if (userInput.equalsIgnoreCase("yes")) {
+                System.out.println();
                 return true;
             } else if (userInput.equalsIgnoreCase("no")) {
+                System.out.println();
                 return false;
             } else {
                 System.out.println("You did not enter a valid input.");
+                System.out.println();
                 continue;
             }
         }
